@@ -38,11 +38,14 @@ public_users.post("/register", (req,res) => {
     return res.status(404).json({message: "Unable to register user."});
 });
 
-// Get the book list available in the shop
+// TASK 10 - Get the book list available in the shop using Promises
 public_users.get('/',function (req, res) {
+    const get_books = new Promise((resolve, reject) => {
   // Send a JSON response containing the books array, formatted with an indentation of 4 spaces for readability
-    res.send(JSON.stringify((books),null,4));
-});
+    resolve(res.send(JSON.stringify((books),null,4)));
+    });
+    get_books.then(() => console.log("Promise for Task 10 resolved"));
+ });
 
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
